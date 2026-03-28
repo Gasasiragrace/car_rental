@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental - Premium Car Rental Service</title>
+    <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Home Page Specific Styles */
+        .hero-section {
+            background: linear-gradient(135deg, #000000 0%, #800000 100%);
+            color: var(--light-text);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--light-text);
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--light-text);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--maroon);
+            color: var(--light-text);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(128, 0, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-text);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .features-section {
+            padding: 5rem 0;
+            background: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--black);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--maroon);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: var(--maroon);
+            color: var(--light-text);
+        }
+
+        .feature-card:hover h3,
+        .feature-card:hover p {
+            color: var(--light-text);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--maroon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--light-text);
+            color: var(--maroon);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+            transition: color 0.3s ease;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            opacity: 0.8;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .cars-section {
+            padding: 5rem 0;
+            background: var(--black);
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .car-card {
+            background: var(--dark-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--maroon);
+            transition: all 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .car-content {
+            padding: 1.5rem;
+        }
+
+        .car-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .car-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--light-text);
+        }
+
+        .car-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--maroon);
+        }
+
+        .car-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .car-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--light-text);
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Navigation -->
+    <nav class="professional-nav">
+        <div class="nav-container">
+            <a href="home.html" class="nav-brand">
+                <img src="images/logo.svg" alt="Car Rental" class="nav-logo">
+                <div class="brand-text">
+                    <div class="brand-name">CAR RENTAL</div>
+                    <div class="brand-tagline">PREMIUM CAR RENTAL SERVICE</div>
+                </div>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="home.html" class="nav-link active">Home</a>
+                <a href="cars.html" class="nav-link">Browse Cars</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <button onclick="logout()" class="nav-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Premium Car Rental</h1>
+            <p class="hero-subtitle">Experience excellence with our premium fleet and exceptional service</p>
+            <div class="hero-buttons">
+                <a href="cars.html" class="btn btn-primary">Browse Our Fleet</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="main-container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Discover the difference with our premium car rental service</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Premium Fleet</h3>
+                    <p>Choose from our carefully maintained fleet of luxury and economy vehicles</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Booking</h3>
+                    <p>Book your perfect car in minutes with our streamlined reservation system</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Full Coverage</h3>
+                    <p>Drive with confidence knowing you're covered by comprehensive insurance</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated team is available around the clock to assist you</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="cars-section">
+        <div class="main-container">
+            <div class="section-title">
+                <h2>Featured Vehicles</h2>
+                <p>Explore our most popular rental options</p>
+            </div>
+            
+            <div class="cars-grid">
+                <div class="car-card">
+                    <img src="images/1.jpeg" alt="Toyota Corolla" class="car-image" 
+                         onerror="this.src='https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=250&fit=crop'">
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3 class="car-name">Toyota Corolla</h3>
+                            <div class="car-price">$40/day</div>
+                        </div>
+                        <div class="car-details">
+                            <span class="car-detail">🚗 Sedan</span>
+                            <span class="car-detail">👥 5 seats</span>
+                            <span class="car-detail">⚡ Automatic</span>
+                        </div>
+                        <button onclick="window.location.href='cars.html'" class="btn btn-primary" style="width: 100%; background: var(--maroon); color: var(--light-text); border-color: var(--maroon);">View Details</button>
+                    </div>
+                </div>
+                
+                <div class="car-card">
+                    <img src="images/2.jpg" alt="Mercedes Benz" class="car-image" 
+                         onerror="this.src='https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop'">
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3 class="car-name">Mercedes Benz</h3>
+                            <div class="car-price">$120/day</div>
+                        </div>
+                        <div class="car-details">
+                            <span class="car-detail">💎 Luxury</span>
+                            <span class="car-detail">👥 5 seats</span>
+                            <span class="car-detail">⚡ Automatic</span>
+                        </div>
+                        <button onclick="window.location.href='cars.html'" class="btn btn-primary" style="width: 100%; background: var(--maroon); color: var(--light-text); border-color: var(--maroon);">View Details</button>
+                    </div>
+                </div>
+                
+                <div class="car-card">
+                    <img src="images/3.jpg" alt="Honda Civic" class="car-image" 
+                         onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop'">
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3 class="car-name">Honda Civic</h3>
+                            <div class="car-price">$55/day</div>
+                        </div>
+                        <div class="car-details">
+                            <span class="car-detail">🚗 Sedan</span>
+                            <span class="car-detail">👥 5 seats</span>
+                            <span class="car-detail">⚡ Automatic</span>
+                        </div>
+                        <button onclick="window.location.href='cars.html'" class="btn btn-primary" style="width: 100%; background: var(--maroon); color: var(--light-text); border-color: var(--maroon);">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-more">
+                <a href="cars.html" class="btn btn-secondary" style="border-color: var(--maroon); color: var(--maroon);">View All Vehicles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="professional-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="images/logo.svg" alt="Car Rental">
+                <p>Your trusted partner for premium car rentals. Experience excellence in every journey.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="cars.html">Browse Cars</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Business Rentals</a></li>
+                    <li><a href="#">Long Term Leasing</a></li>
+                    <li><a href="#">Airport Pickup</a></li>
+                    <li><a href="#">24/7 Roadside Assistance</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-contact">
+                    <p>📞 +250 794 098 499</p>
+                    <p>✉️ info@carrental.com</p>
+                    <p>📍 Kigali, Rwanda</p>
+                    <p>🕒 24/7 Service</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Car Rental. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token'); 
+            if(!token){
+                window.location.href = 'login.html';
+            }
+        });
+
+        function logout(){
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚗 RideEase - Premium Car Rental
 
 A full-stack MERN web application for premium car rentals in Rwanda. Users can browse cars, make bookings, manage profiles, and process payments.
@@ -33,3 +34,6 @@ Before running this project, make sure you have:
 ```bash
 git clone https://github.com/kellynshuti9/ReadEase.git
 cd ReadEase
+=======
+# car_rental
+>>>>>>> 87904f44a9af7d07ab0c9ac4d4e08a409dd6440a
